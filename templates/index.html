@@ -2,20 +2,26 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Primeiro Projeto</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <h1>Bem-vindo ao Meu Primeiro Projeto!</h1>
-  <button id="btn">Verificar status da API</button>
-  <pre id="output"></pre>
+  <button id="btn-status">Verificar status da API</button>
+  <input type="text" id="api-output" readonly placeholder="Aqui aparecerá a mensagem da API">
 
   <script>
-    document.getElementById('btn').onclick = async () => {
-      const res = await fetch('/api/status');
-      const data = await res.json();
-      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
-    };
+    document.getElementById('btn-status').addEventListener('click', async () => {
+      try {
+        const resp = await fetch('/api/status');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        document.getElementById('api-output').value = data.message;
+      } catch (err) {
+        document.getElementById('api-output').value = 'Erro: ' + err.message;
+      }
+    });
   </script>
 </body>
 </html>
