@@ -1,6 +1,10 @@
 Flask==3.1.1
 itsdangerous==2.2.0
 Jinja2==3.1.6
-…
-waitress==2.1.2
+MarkupSafe==2.0.2
+Werkzeug==3.1.3
+click==8.2.1
+colorama==0.4.6
+waitress==2.1.2        # se for usar waitress
+gunicorn==21.2.0       # se for usar gunicorn
 
