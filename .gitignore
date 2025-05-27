@@ -1,11 +1,10 @@
-# Python
-__pycache__/
-*.py[cod]
-*.sqlite3
-
 # Virtualenv
 venv/
-
-# Editor
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+# Arquivos de log
+*.log
+# IDEs / editores
 .vscode/
-*.swp
+.idea/
